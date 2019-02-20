@@ -1,0 +1,38 @@
+{
+  "name": "okta-node-sqlserver-tutorial",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon . --watch src -e js,ejs,sql",
+    "start": "node .",
+    "test": "lab"
+  },
+  "keywords": [],
+  "author": "David Neal <david@reverentgeek.com> (https://reverentgeek.com)",
+  "license": "MIT",
+  "dependencies": {
+    "bell": "^9.4.0",
+    "blipp": "^3.1.2",
+    "boom": "^7.3.0",
+    "bounce": "^1.2.3",
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
+    "hapi": "^18.1.0",
+    "hapi-auth-cookie": "^9.1.0",
+    "hapi-pino": "^5.4.1",
+    "inert": "^5.1.2",
+    "joi": "^14.3.1",
+    "mssql": "^4.3.2",
+    "vision": "^5.4.4"
+  },
+  "devDependencies": {
+    "code": "^5.2.4",
+    "eslint": "^5.14.1",
+    "eslint-config-leankit": "^4.5.0",
+    "fs-extra": "^7.0.1",
+    "lab": "^18.0.2",
+    "nodemon": "^1.18.10",
+    "testdouble": "^3.10.0"
+  }
+}
