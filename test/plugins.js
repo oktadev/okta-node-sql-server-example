@@ -20,7 +20,15 @@ describe( "Plugins", () => {
 
     it( "registers plugins", async () => {
         const server = hapi.server();
-        server.app.config = { sql: {} };
+        server.app.config = {
+            cookiePwd: "superCoolAndAwesomeCookiePasswordYouCanNeverGuess",
+            okta: {
+                url: "https://dev-1234.oktapreview.com",
+                clientId: "1234567890",
+                clientSecret: "adfasbasdfasvbasdfasvgadfbasdf"
+            },
+            sql: {}
+        };
         await plugins.register( server );
         expect( server.plugins.blipp ).to.exist();
         expect( server.plugins.sql ).to.exist();

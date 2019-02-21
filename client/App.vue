@@ -2,7 +2,7 @@
   <div id="app">
     <h1>{{ msg }}</h1>
     <div class="row" id="eventList">
-        <h3>Event List</h3>
+        <h2>Event List</h2>
         <table v-if="hasEvents">
             <thead>
                 <tr>
@@ -28,7 +28,7 @@
         <p v-if="noEvents">No events yet!</p>
     </div>
     <div class="row" id="eventEdit">
-        <h3>Add an Event</h3>
+        <h2>Add an Event</h2>
         <form class="col s12" @submit.prevent="addEvent">
             <div class="row">
                 <div class="input-field col s6">
@@ -72,7 +72,7 @@
     </div>
     <div id="deleteConfirm" ref="deleteConfirm" class="modal">
         <div class="modal-content">
-            <h4>Confirm delete</h4>
+            <h2>Confirm delete</h2>
             <p>Delete {{ selectedEvent }}?</p>
         </div>
         <div class="modal-footer">
@@ -134,6 +134,7 @@ export default {
 					this.loadEvents();
 				} )
 				.catch( err => {
+          this.msg = err.message;
 					console.log( err );
 				} );
 		},
@@ -150,6 +151,7 @@ export default {
 				.delete( `/api/events/${ id }` )
 				.then( this.loadEvents )
 				.catch( err => {
+          this.msg = err.message;
           console.log( err );
           this.loadEvents();
 				} );
@@ -181,6 +183,7 @@ export default {
           this.events = this.formatEvents( res.data );
         } )
         .catch( err => {
+          this.msg = err.message;
           console.log( err );
         } );
     }
@@ -192,6 +195,9 @@ export default {
 </script>
 
 <style lang="css">
+#app h2 {
+  font-size: 2rem;
+}
 .datetime-label {
   color: #9e9e9e;
   font-size: .8rem;

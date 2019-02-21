@@ -1,7 +1,8 @@
 <div class="container">
-    <h1 class="header"><%= title %></h1>
-    <p><%= message %></p>
     <% if ( isAuthenticated ) { %>
-    <div id="app"></div>
+        <div id="app"></div>
+    <% } else { %>
+        <h1 class="header"><%= title %></h1>
+        <p><%= message %></p>    
     <% } %>
 </div>
