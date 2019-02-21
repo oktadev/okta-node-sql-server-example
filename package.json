@@ -8,6 +8,7 @@
     "dev:start": "npm-run-all build start",
     "dev": "nodemon --watch client --watch src -e js,ejs,sql,vue,css --exec npm run dev:start",
     "start": "node .",
+    "tasks:initdb": "node tasks/initdb",
     "test": "lab"
   },
   "keywords": [],
