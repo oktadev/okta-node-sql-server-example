@@ -90,77 +90,77 @@ import moment from "moment";
 
 export default {
   name: "app",
-	computed: {
-		hasEvents() {
-			return this.isLoading === false && this.events.length > 0;
-		},
-		noEvents() {
-			return this.isLoading === false && this.events.length === 0;
-		}
-	},
-	data() {
-		return {
-			title: "",
-			description: "",
-			events: [],
-			isLoading: true,
+  computed: {
+    hasEvents() {
+      return this.isLoading === false && this.events.length > 0;
+    },
+    noEvents() {
+      return this.isLoading === false && this.events.length === 0;
+    }
+  },
+  data() {
+    return {
+      title: "",
+      description: "",
+      events: [],
+      isLoading: true,
       startDate: "",
       startTime: "",
       endDate: "",
       endTime: "",
-			selectedEvent: "",
-			selectedEventId: 0
-		};
+      selectedEvent: "",
+      selectedEventId: 0
+    };
   },
   methods: {
     addEvent() {
-			const event = {
-				startDate: this.startDate ? moment( this.startDate ).format("YYYY-MM-DD") : null,
-				startTime: this.startTime ? moment( this.startTime ).format("YYYY-MM-DD HH:mm:00") : null,
-				endDate: this.endDate ? moment( this.endDate ).format("YYYY-MM-DD") : null,
-				endTime: this.endTime ? moment( this.endTime ).format("YYYY-MM-DD HH:mm:00") : null,
-				title: this.title,
-				description: this.description
+      const event = {
+        startDate: this.startDate ? moment( this.startDate ).format( "YYYY-MM-DD" ) : null,
+        startTime: this.startTime ? moment( this.startTime ).format( "YYYY-MM-DD HH:mm:00" ) : null,
+        endDate: this.endDate ? moment( this.endDate ).format( "YYYY-MM-DD" ) : null,
+        endTime: this.endTime ? moment( this.endTime ).format( "YYYY-MM-DD HH:mm:00" ) : null,
+        title: this.title,
+        description: this.description
       };
-			axios
-				.post( "/api/events", event )
-				.then( () => {
+      axios
+        .post( "/api/events", event )
+        .then( () => {
           this.startDate = "";
-					this.startTime = "";
-					this.endDate = "";
-					this.endTime = "";
+          this.startTime = "";
+          this.endDate = "";
+          this.endTime = "";
           this.title = "";
           this.description = "";
-					this.loadEvents();
-				} )
-				.catch( err => {
+          this.loadEvents();
+        } )
+        .catch( err => {
           this.msg = err.message;
-					console.log( err );
-				} );
-		},
-		confirmDeleteEvent( id ) {
-			const event = this.events.find( e => e.id === id );
-      this.selectedEvent = `'${ event.title }' on ${ event.startDate }${ event.startTime ? " at " + event.startTime : "" }`;
-			this.selectedEventId = event.id;
-			const dc = this.$refs.deleteConfirm;
-			const modal = M.Modal.init( dc );
-			modal.open();
-		},
-		deleteEvent( id ) {
-			axios
-				.delete( `/api/events/${ id }` )
-				.then( this.loadEvents )
-				.catch( err => {
+          console.log( err );
+        } );
+    },
+    confirmDeleteEvent( id ) {
+      const event = this.events.find( e => e.id === id );
+      this.selectedEvent = `'${ event.title }' on ${ event.startDate }${ event.startTime ? ` at ${ event.startTime }` : "" }`;
+      this.selectedEventId = event.id;
+      const dc = this.$refs.deleteConfirm;
+      const modal = M.Modal.init( dc );
+      modal.open();
+    },
+    deleteEvent( id ) {
+      axios
+        .delete( `/api/events/${ id }` )
+        .then( this.loadEvents )
+        .catch( err => {
           this.msg = err.message;
           console.log( err );
           this.loadEvents();
-				} );
+        } );
     },
     formatDate( d ) {
-      return d ? moment.utc(d).format("MMM D, YYYY") : "";
+      return d ? moment.utc( d ).format( "MMM D, YYYY" ) : "";
     },
     formatTime( t ) {
-      return t ? moment(t).format("h:mm a") : ""
+      return t ? moment( t ).format( "h:mm a" ) : "";
     },
     formatEvents( events ) {
       return events.map( event => {
@@ -168,12 +168,12 @@ export default {
           id: event.id,
           title: event.title,
           description: event.description,
-          startDate: this.formatDate(event.startDate),
-          startTime: this.formatTime(event.startTime),
-          endDate: this.formatDate(event.endDate),
-          endTime: this.formatTime(event.endTime)
+          startDate: this.formatDate( event.startDate ),
+          startTime: this.formatTime( event.startTime ),
+          endDate: this.formatDate( event.endDate ),
+          endTime: this.formatTime( event.endTime )
         };
-      });
+      } );
     },
     loadEvents() {
       axios
@@ -189,8 +189,8 @@ export default {
     }
   },
   mounted() {
-		return this.loadEvents();
-  },
+    return this.loadEvents();
+  }
 };
 </script>
 

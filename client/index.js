@@ -9,6 +9,6 @@ import App from "./App";
 Vue.use( Datetime );
 
 new Vue( { // eslint-disable-line no-new
-    el: "#app",
-    render: h => h( App )
+  el: "#app",
+  render: h => h( App )
 } );
