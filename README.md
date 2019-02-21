@@ -41,13 +41,13 @@ docker run -d --name name_your_container -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@55
 5. Copy `.env.sample` to `.env`, and modify the settings to match your environment
 
 ```bash
-# Hapi Server Configuration
+# hapi server configuration
 PORT=8080
 HOST=localhost
 HOST_URL=http://localhost:8080
 COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
 
-# SQL Server Connection Configuration
+# SQL Server connection
 SQL_USER=dbuser
 SQL_PASSWORD=P@55w0rd
 SQL_DATABASE=calendar
