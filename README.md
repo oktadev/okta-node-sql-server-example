@@ -1,12 +1,13 @@
-# Build a Secure Node.js with SQL Server
+# Build a Secure Node.js App with SQL Server
 
-This is a sample application for the article [Build a Secure Node.js with SQL Server]().
+This is a sample application for the article [Build a Secure Node.js App with SQL Server]().
 
 Built with love, using:
 
 * [Node.js](https://nodejs.org/en/)
 * [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-2017)
 * [hapi](https://hapijs.com/)
+* [Vue.js](https://vuejs.org/)
 
 ## Requirements
 
