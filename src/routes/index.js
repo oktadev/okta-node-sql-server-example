@@ -1,6 +1,6 @@
 "use strict";
 
-// const boom = require( "boom" );
+const boom = require( "boom" );
 const api = require( "./api" );
 
 module.exports.register = async server => {
@@ -93,6 +93,16 @@ module.exports.register = async server => {
                 } catch ( err ) {
                     request.log( [ "error", "logout" ], err );
                 }
+            }
+        }
+    } );
+
+    server.route( {
+        method: "GET",
+        path: "/{param*}",
+        handler: {
+            directory: {
+                path: "dist"
             }
         }
     } );

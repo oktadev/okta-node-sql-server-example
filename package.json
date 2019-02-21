@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon . --watch src -e js,ejs,sql",
+    "build": "parcel build client/index.js",
+    "dev:start": "npm-run-all build start",
+    "dev": "nodemon --watch client --watch src -e js,ejs,sql,vue,css --exec npm run dev:start",
     "start": "node .",
     "test": "lab"
   },
@@ -12,6 +14,7 @@
   "author": "David Neal <david@reverentgeek.com> (https://reverentgeek.com)",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "bell": "^9.4.0",
     "blipp": "^3.1.2",
     "boom": "^7.3.0",
@@ -23,16 +26,29 @@
     "hapi-pino": "^5.4.1",
     "inert": "^5.1.2",
     "joi": "^14.3.1",
+    "luxon": "^1.11.3",
+    "material-design-icons": "^3.0.1",
+    "moment": "^2.24.0",
     "mssql": "^4.3.2",
-    "vision": "^5.4.4"
+    "vision": "^5.4.4",
+    "vue": "^2.6.6",
+    "vue-datetime": "^1.0.0-beta.10",
+    "weekstart": "^1.0.0"
   },
   "devDependencies": {
+    "@vue/component-compiler-utils": "^2.5.2",
     "code": "^5.2.4",
     "eslint": "^5.14.1",
     "eslint-config-leankit": "^4.5.0",
+    "eslint-plugin-vue": "^5.2.2",
     "fs-extra": "^7.0.1",
     "lab": "^18.0.2",
+    "materialize-css": "^1.0.0-rc.2",
     "nodemon": "^1.18.10",
-    "testdouble": "^3.10.0"
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.11.0",
+    "parcel-plugin-eslint": "^1.0.6",
+    "testdouble": "^3.10.0",
+    "vue-template-compiler": "^2.6.6"
   }
 }

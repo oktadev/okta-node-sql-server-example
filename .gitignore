@@ -3,7 +3,9 @@ config.*.json
 config.json
 .DS_Store
 .vscode
+.cache
 logs
 *.log
 npm-debug.log*
 .env
+dist/

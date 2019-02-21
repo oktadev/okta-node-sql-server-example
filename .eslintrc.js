@@ -4,7 +4,7 @@ module.exports = {
         "commonjs": true,
         "es6": true
     },
-    "extends": ["leankit", "leankit/es6"],
+    "extends": [ "leankit", "leankit/es6", "plugin:vue/essential" ],
     "parserOptions": {
         "ecmaVersion": 2017
     },

@@ -2,6 +2,7 @@
 
 const blipp = require( "blipp" );
 const ejs = require( "ejs" );
+const inert = require( "inert" );
 const pino = require( "hapi-pino" );
 const { join } = require( "path" );
 const vision = require( "vision" );
@@ -13,7 +14,7 @@ const isDev = process.env.NODE_ENV !== "production";
 
 module.exports.register = async server => {
     // register plugins
-    await server.register( [ blipp, {
+    await server.register( [ blipp, inert, {
         plugin: pino,
         options: {
             prettyPrint: isDev,
