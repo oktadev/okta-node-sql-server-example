@@ -1,11 +1,11 @@
-SELECT  id
-        , title
-        , description
-        , startDate
-        , startTime
-        , endDate
-        , endTime
+SELECT  [id]
+        , [title]
+        , [description]
+        , [startDate]
+        , [startTime]
+        , [endDate]
+        , [endTime]
 FROM    [dbo].[events]
-WHERE   userId = @userId
+WHERE   [userId] = @userId
 ORDER BY
-        startDate, startTime
+        [startDate], [startTime];

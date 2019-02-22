@@ -1,15 +1,15 @@
-INSERT INTO [dbo].[events] 
-( 
-    userId
-    , title
-    , description
-    , startDate
-    , startTime
-    , endDate
-    , endTime
-) 
-VALUES 
-( 
+INSERT INTO [dbo].[events]
+(
+    [userId]
+    , [title]
+    , [description]
+    , [startDate]
+    , [startTime]
+    , [endDate]
+    , [endTime]
+)
+VALUES
+(
     @userId
     , @title
     , @description
