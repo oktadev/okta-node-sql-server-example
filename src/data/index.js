@@ -37,7 +37,7 @@ const client = async ( server, config ) => {
     };
 
     return {
-        events: await events.register( { getPool } )
+        events: await events.register( { sql, getPool } )
     };
 };
 

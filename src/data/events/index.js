@@ -1,15 +1,19 @@
 "use strict";
 
-const sql = require( "mssql" );
 const utils = require( "../utils" );
 
-const register = async ( { getPool } ) => {
+const register = async ( { sql, getPool } ) => {
+    // read in all the .sql files for this folder
     const sqlQueries = await utils.loadSqlQueries( "events" );
 
     const getEvents = async userId => {
         const pool = await getPool();
         const request = await pool.request();
+
+        // configure sql query parameters
         request.input( "userId", sql.VarChar( 50 ), userId );
+
+        // return the executed query
         return request.query( sqlQueries.getEvents );
     };
 

@@ -4,9 +4,13 @@ const Hapi = require( "hapi" );
 const plugins = require( "./plugins" );
 const routes = require( "./routes" );
 
-module.exports = async config => {
+const app = async config => {
     const { host, port } = config;
+
+    // create an instance of hapi
     const server = Hapi.server( { host, port } );
+
+    // store the config for later use
     server.app.config = config;
 
     // register plugins
@@ -18,3 +22,4 @@ module.exports = async config => {
     return server;
 };
 
+module.exports = app;
