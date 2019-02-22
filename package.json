@@ -1,5 +1,5 @@
 {
-  "name": "okta-node-sqlserver-tutorial",
+  "name": "okta-node-sql-server-tutorial",
   "version": "0.1.0",
   "description": "",
   "main": "src/index.js",
