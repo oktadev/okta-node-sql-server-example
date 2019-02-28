@@ -2,13 +2,16 @@
 
 const utils = require( "../utils" );
 
-const register = async ( { sql, getPool } ) => {
+const register = async ( { sql, getConnection } ) => {
     // read in all the .sql files for this folder
     const sqlQueries = await utils.loadSqlQueries( "events" );
 
     const getEvents = async userId => {
-        const pool = await getPool();
-        const request = await pool.request();
+        // get a connection to SQL Server
+        const cnx = await getConnection();
+
+        // create a new request
+        const request = await cnx.request();
 
         // configure sql query parameters
         request.input( "userId", sql.VarChar( 50 ), userId );
@@ -18,8 +21,8 @@ const register = async ( { sql, getPool } ) => {
     };
 
     const addEvent = async ( { userId, title, description, startDate, startTime, endDate, endTime } ) => {
-        const pool = await getPool();
-        const request = await pool.request();
+        const cnx = await getConnection();
+        const request = await cnx.request();
         request.input( "userId", sql.VarChar( 50 ), userId );
         request.input( "title", sql.NVarChar( 200 ), title );
         request.input( "description", sql.NVarChar( 1000 ), description );
@@ -31,8 +34,8 @@ const register = async ( { sql, getPool } ) => {
     };
 
     const updateEvent = async ( { id, userId, title, description, startDate, startTime, endDate, endTime } ) => {
-        const pool = await getPool();
-        const request = await pool.request();
+        const cnx = await getConnection();
+        const request = await cnx.request();
         request.input( "id", sql.Int, id );
         request.input( "userId", sql.VarChar( 50 ), userId );
         request.input( "title", sql.NVarChar( 200 ), title );
@@ -45,8 +48,8 @@ const register = async ( { sql, getPool } ) => {
     };
 
     const deleteEvent = async ( { id, userId } ) => {
-        const pool = await getPool();
-        const request = await pool.request();
+        const cnx = await getConnection();
+        const request = await cnx.request();
         request.input( "id", sql.Int, id );
         request.input( "userId", sql.VarChar( 50 ), userId );
         return request.query( sqlQueries.deleteEvent );
