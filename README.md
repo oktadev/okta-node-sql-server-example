@@ -1,6 +1,6 @@
 # Build a Secure Node.js App with SQL Server
 
-This is a sample application for the article [Build a Secure Node.js App with SQL Server]().
+This is a sample application for the article [Build a Secure Node.js App with SQL Server](https://developer.okta.com/blog/2019/03/11/node-sql-server).
 
 Built with love, using:
 
