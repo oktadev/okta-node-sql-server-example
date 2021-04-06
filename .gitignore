@@ -9,3 +9,4 @@ logs
 npm-debug.log*
 .env
 dist/
+.idea/

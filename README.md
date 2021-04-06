@@ -83,41 +83,44 @@ npm run tasks:initdb
 
 ### Easily Add Authentication to Your Applications with Okta
 
-This application uses Okta for authentication. To complete your development set up, you'll need an Okta developer account. Go to the [Okta Developer Portal](https://developer.okta.com/) and sign up for a forever free Okta account.
+This application uses Okta for authentication. Before you begin, you'll need a free Okta developer account. Install the [Okta CLI](https://cli.okta.com) and run `okta register` to sign up for a new account. If you already have an account, run `okta login`.
 
-![](docs/add-application-00.jpg)
+Then, run `okta apps create`. Select the default app name, or change it as you see fit. Choose **Web** and press **Enter**.
 
-After creating your account, click the **Applications** link at the top, and then click **Add Application**.
+Select **Other**. Then, change the Redirect URI to `http://localhost:8080/authorization-code/callback` and accept the default Logout Redirect URI of `http://localhost:8080`.
 
-![](docs/add-application-01.jpg)
+The Okta CLI will create an OIDC Web App in your Okta Org. It will add the redirect URIs you specified and grant access to the Everyone group. You will see output like the following when it's finished:
 
-Next, choose a **Web Application** and click **Next**.
+```
+Okta application configuration has been written to: /path/to/app/.okta.env
+```
 
-![](docs/add-application-02.jpg)
+Run `cat .okta.env` (or `type .okta.env` on Windows) to see the issuer and credentials for your app.
 
-Enter a name for your application, such as **Node-SQL**. Then, click **Done** to finish creating the application.
+```bash
+export OKTA_OAUTH2_ISSUER="https://dev-133337.okta.com/oauth2/default"
+export OKTA_OAUTH2_CLIENT_ID="0oab8eb55Kb9jdMIr5d6"
+export OKTA_OAUTH2_CLIENT_SECRET="NEVER-SHOW-SECRETS"
+```
 
-![](docs/add-application-03.jpg)
+Your Okta domain is the first part of your issuer, before `/oauth2/default`.
 
-Near the bottom of the application page you will find a section titled **Client Credentials**. Copy the Client ID and Client secret values and paste them into your `.env` file to replace `{yourClientId}` and `{yourClientSecret}`, respectively.
+NOTE: You can also use the Okta Admin Console to create your app. See [Create a Web App](https://developer.okta.com/docs/guides/sign-into-web-app/-/create-okta-application/) for more information.
 
-![](docs/add-application-04.jpg)
+Copy your Okta values into the `.env` file to replace the `{...}` placeholders.
 
-Click on the **Dashboard** link. On the right side of the page, you should find your Org URL. Copy and paste this value into your `.env` file to replace the value for `OKTA_ORG_URL`.
+```
+OKTA_ORG_URL=https://{yourOktaDomain}
+OKTA_CLIENT_ID={yourClientId}
+OKTA_CLIENT_SECRET={yourClientSecret}
+```
 
-![](docs/your-org-url.png)
+Next, enable self-service registration. This will allow new users to create their own account. Run `okta login` to get the URL for your Okta org. Open the result in your favorite browser and log in to the Okta Admin Console.
 
-
-Next, enable self-service registration. This will allow new users to create their own account. Click on the **Users** menu and select **Registration**.
-
-![](docs/self-service-registration-01.jpg)
-
-1. Click on the **Edit** button.
-1. Change Self-service registration to Enabled.
-1. Click the **Save** button at the bottom of the form.
-
-![](docs/self-service-registration-02.jpg)
-
+1. Click on the **Directory** menu and select **Self-Service Registration**.
+2. Click on the **Enable Registration** button.
+3. If you don't see this button, click **Edit** and change **Self-service registration** to *Enabled*.
+4. Click the **Save** button at the bottom of the form.
 
 ### Run the Local Web Application
 
@@ -130,3 +133,10 @@ Next, enable self-service registration. This will allow new users to create thei
 > npm run test
 ```
 
+## Help
+
+Please leave a commenent on this repo's [blog post](https://developer.okta.com/blog/2019/03/11/node-sql-server), [raise an issue](https://github.com/oktadeveloper/okta-node-sql-server-example/issues) if you find a problem with the example application, or visit our [Okta Developer Forums](https://devforum.okta.com/).
+
+## License
+
+Apache 2.0, see [LICENSE](LICENSE).
