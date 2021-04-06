@@ -83,9 +83,7 @@ npm run tasks:initdb
 
 ### Easily Add Authentication to Your Applications with Okta
 
-This application uses Okta for authentication. 
-
-Before you begin, you'll need a free Okta developer account. Install the [Okta CLI](https://cli.okta.com) and run `okta register` to sign up for a new account. If you already have an account, run `okta login`.
+This application uses Okta for authentication. Before you begin, you'll need a free Okta developer account. Install the [Okta CLI](https://cli.okta.com) and run `okta register` to sign up for a new account. If you already have an account, run `okta login`.
 
 Then, run `okta apps create`. Select the default app name, or change it as you see fit. Choose **Web** and press **Enter**.
 
